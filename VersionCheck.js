@@ -8,7 +8,7 @@ getVersionName = () => {
         reject(new Error('Request timed out'));
       }, FETCH_TIMEOUT);
 
-      fetch(BASE_URL + '/versioninfoes')
+      fetch("service url" + '/versioninfoes')
         .then(function(response) {
           clearTimeout(timeout);
           if (response && response.status == 200) {
@@ -40,7 +40,26 @@ getVersionName = () => {
           : null;
       });
   };
-  
+     showAlert = () => {
+        Alert.alert(
+            'Güncelleme Bilgisi',
+            'Yeni versiyon yayındadır. Lütfen kullandığınız versiyonu güncelleyiniz',
+            [
+                { text: 'Tamam', onPress: () => console.log('OK Pressed') },
+            ]
+        );
+    }
+
+    showErrorAlert = (text) => {
+        Alert.alert(
+            'Hata',
+            text,
+            [
+                { text: 'Tamam' },
+            ]
+        );
+    }
+
      <View style={styles.version}>
             <Text>Version {packageJson.version}</Text>
           </View>
